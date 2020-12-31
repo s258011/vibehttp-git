@@ -1,0 +1,34 @@
+runtime: python
+env: flex
+#name: 'docker.io/vibemlimage/http:latest'
+entrypoint: gunicorn -b :8080 --workers 1 --threads 8 main:app
+runtime_config:
+  python_version: 3.6
+network:
+  name: default
+  subnetwork_name: default
+  forwarded_ports:
+    - 80:8080
+# This sample incurs costs to run on the App Engine flexible environment.
+# The settings below are to reduce costs during testing and are not appropriate
+# for production use. For more information, see:
+# https://cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml
+skip_files: venv
+resources:
+  cpu: 1
+  memory_gb: 0.8
+  disk_size_gb: 10
+readiness_check:
+  path: "/"
+  check_interval_sec: 90
+  timeout_sec: 20
+  failure_threshold: 3
+  success_threshold: 3
+  app_start_timeout_sec: 400
+liveness_check:
+  path: "/"
+  check_interval_sec: 90
+  timeout_sec: 20
+  failure_threshold: 3
+  success_threshold: 3
+  initial_delay_sec: 400
