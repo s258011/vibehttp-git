@@ -1,0 +1,10 @@
+Dockerfile
+README.md
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+.pytest_cache
+.git
+.idea
+nifty-foundry-292614-ef00096b72dd.json
