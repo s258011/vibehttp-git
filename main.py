@@ -113,16 +113,17 @@ def index():
               '9900', '9901', '9902', '9903', '9904', '9905', '9908', '9909', '9910', '9911', '9912', '9913', '9920',
               '9921', '9922', '9925', '9926', '9927', '9930', '9940', '9941']
     sampling = random.choices(images, k=3)
-    # sampling = ['1722', '2018', '1942', '2339']
+    sampling = ['2055.2', '4233', '7179', '7508', '8116', '9300']
+    sampling = ['2055.2', '4233', '7179']
 
     storage_client = storage.Client()
     bucket_name = 'vibe_image'
     bucket = storage_client.get_bucket(bucket_name)
-    for img in sampling:
-        file_data = 'img/IAPS 1-20 Images/' + img + '.jpg'
-        temp_file_name = 'static/img/' + img + '.jpg'
-        blob = bucket.get_blob(file_data)
-        blob.download_to_filename(temp_file_name)
+    # for img in sampling:
+    #     file_data = 'img/IAPS 1-20 Images/' + img + '.jpg'
+    #     temp_file_name = 'static/img/' + img + '.jpg'
+    #     blob = bucket.get_blob(file_data)
+    #     blob.download_to_filename(temp_file_name)
 
     return render_template('index.html', title='Welcome', sampling_images=sampling)
 
